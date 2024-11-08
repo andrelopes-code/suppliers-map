@@ -5,7 +5,7 @@ const STROKE_COLOR = "#4b5260";
 const CONFIG = {
     api: {
         states: "static/data/geojson/br_states.json",
-        cities: "static/data/geojson/geojs-{uf}-mun.json",
+        cities: "static/data/geojson/mun/geojs-{uf}-mun.json",
         suppliers: "static/data/suppliers.json",
     },
 };
@@ -145,6 +145,9 @@ async function loadStates() {
                 fillColor: FILL_COLOR,
             },
             onEachFeature: function (feature, layer) {
+                layer.on("mouseover", function () {
+                    console.log(feature);
+                });
                 layer.on("click", async function () {
                     loadCities(ufMap[feature.id]);
                 });
