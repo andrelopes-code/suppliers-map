@@ -214,9 +214,8 @@ async function loadSuppliers() {
 }
 
 async function preloadCities() {
-    for (const uf in ufMap) {
-        await loadGeoJSON("cities", uf);
-    }
+    const promises = Object.keys(ufMap).map((uf) => loadGeoJSON("cities", ufMap[uf]));
+    await Promise.all(promises);
 }
 
 async function init() {
