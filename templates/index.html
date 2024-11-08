@@ -1,24 +1,24 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
-  <head>
-    <meta charset="UTF-8" />
-    <title>Map</title>
-    <link rel="stylesheet" href="{{ url_for('static', path='css/style.css') }}" />
-    <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
-    <script src="https://unpkg.com/@phosphor-icons/web"></script>
-  </head>
-  <body>
-    <img
-      src="{{ url_for('static', path='img/logo.png') }}"
-      class="top-0 left-5 z-50 absolute opacity-50 size-24"
-    />
+    <head>
+        <meta charset="UTF-8" />
+        <title>Map</title>
+        <link rel="stylesheet" href="{{ url_for('static', path='css/style.css') }}" />
+        <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+        <script src="https://unpkg.com/@phosphor-icons/web"></script>
+    </head>
+    <body>
+        <img
+            src="{{ url_for('static', path='img/logo.png') }}"
+            class="top-0 left-5 z-50 absolute opacity-50 size-24"
+        />
 
-    <div class="w-screen h-screen">
-      {% include "details.html" %}
-      <div id="map" class="z-10 !bg-[#11151c] w-full h-full"></div>
-    </div>
-  </body>
+        <div class="w-screen h-screen">
+            {% include "details.html" %}
+            <div id="map" class="z-10 !bg-[#11151c] w-full h-full"></div>
+        </div>
+    </body>
 
-  <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
-  <script src="{{ url_for('static', path='src/main.js') }}"></script>
+    <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+    <script src="{{ url_for('static', path='src/main.js') }}"></script>
 </html>
