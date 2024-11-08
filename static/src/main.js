@@ -4,9 +4,9 @@ const STROKE_COLOR = "#4b5260";
 
 const CONFIG = {
     api: {
-        states: "http://localhost:8000/static/data/geojson/br_states.json",
-        cities: "http://localhost:8000/static/data/geojson/geojs-{uf}-mun.json",
-        suppliers: "http://localhost:8000/static/data/suppliers.json",
+        states: "static/data/geojson/br_states.json",
+        cities: "static/data/geojson/geojs-{uf}-mun.json",
+        suppliers: "static/data/suppliers.json",
     },
 };
 
@@ -213,10 +213,17 @@ async function loadSuppliers() {
     citySuppliers = await response.json();
 }
 
+async function preloadCities() {
+    for (const uf in ufMap) {
+        await loadGeoJSON("cities", uf);
+    }
+}
+
 async function init() {
     try {
         await loadSuppliers();
         await loadStates();
+        await preloadCities();
     } catch (error) {
         console.error("Erro:", error);
     }
